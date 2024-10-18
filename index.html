@@ -1,30 +1,160 @@
-<!DOCTYPE html>
 <html>
-<head>
-  <title>Infinite Fullscreen MP4 Playback</title>
-  <style>
-    /* Make the video fullscreen */
-    #video {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      object-fit: cover;
-    }
-    /* Hide the browser controls */
-    body {
-      margin: 0;
-      padding: 0;
-      overflow: hidden;
-    }
-  </style>
-</head>
-<body>
-  <video id="video" autoplay loop>
-    <source src="./assets/bsdance.mp4" type="video/mp4">
-    Your browser does not support the video tag.
-  </video>
+  <body>
 
-</body>
+<h1>Scroll.</h1>
+<section>
+  <p>
+   A useless website maintained by a useless organization maybe one of our useless projects lead you here?
+  </p>
+  <p>Ⓒ 2024 Orange Labs , All rights reserved </p>
+ 
+ <!--
+
+  <div class="actions">
+    <a href=" :) " target="_blank" rel="noreferrer noopener"><span>Read the docs</span><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" />
+      </svg>
+    </a>
+    <a href=" :)" target="_blank" rel="noreferrer noopener"><span>Read the spec</span><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" />
+      </svg>
+    </a>
+  </div>
+
+-->
+
+</section>
+<style>
+  :root {
+  --accent: 310;
+  accent-color: hsl(var(--accent) 90% 60%);
+}
+
+*,
+*:after,
+*:before {
+	box-sizing: border-box;
+}
+
+body {
+	display: grid;
+	place-items: center;
+	min-height: 200vh;
+	background: hsl(0 0% 0%);
+	color: hsl(0 0% 98%);
+	font-family:  "SF Pro Text", "SF Pro Icons", "AOS Icons", "Helvetica Neue", Helvetica, Arial, sans-serif, system-ui;
+}
+
+label {
+  position: fixed;
+  top: 1rem;
+  right: 2.5rem;
+  z-index: 9999;
+}
+
+[type=checkbox] {
+  position: fixed;
+  top: 1.125rem;
+  right: 1rem;
+}
+
+section {
+	position: fixed;
+	top: 0;
+	left: 50%;
+	display: grid;
+	justify-content: start;
+	align-content: center;
+	translate: -50% 0;
+	height: 100vh;
+	width: 600px;
+	max-width: calc(100% - 4rem);
+	gap: 1rem;
+}
+
+:is(a, p) {
+	margin: 0;
+	font-size: 1rem;
+	font-weight: 400;
+	font-size: clamp(1rem, 0.75vw + 1rem, 1.25rem);
+}
+
+.actions {
+	display: flex;
+	gap: 6ch;
+	flex-wrap: wrap;
+}
+
+:is(p:nth-of-type(2), a) {
+	opacity: 0;
+	animation: fade-in both linear;
+	animation-timeline: scroll(root);
+	animation-range: 75vh 90vh;
+}
+
+p:nth-of-type(2) {
+	--opacity: 0.65;
+}
+
+a {
+	display: flex;
+	gap: 1ch;
+	align-items: center;
+	color: hsl(0 0% 98%);
+	text-decoration-line: none;
+}
+
+a:is(:hover, :focus-visible) {
+	text-decoration-line: underline;
+	text-decoration-thickness: 0.4ch;
+	text-underline-offset: 0.5ch;
+}
+
+a svg {
+	width: 24px;
+	stroke-width: 2;
+}
+
+@keyframes fade-in {
+	to {
+		opacity: var(--opacity, 1);
+	}
+}
+
+h1 {
+  position: fixed;
+  margin: 0;
+  bottom: 1rem;
+  right: 1rem;
+}
+
+p:nth-of-type(1) {;
+	font-size: clamp(1rem, 3vw + 1rem, 2rem);
+	font-weight: 600;
+	background: radial-gradient(50% 100% at 50% 100%, hsl(var(--accent, 10) 90% 95%), hsl(var(--accent, 10) 90% 50%), transparent 50%);
+	background-size: 400% 600%;
+	-webkit-background-clip: text;
+	background-position: 50% 0;
+	color: transparent;
+  opacity: 0;
+	animation: move-bg both linear, fade-in both linear;
+	animation-timeline: scroll(root);
+	animation-range: 0 100vh, 40vh 100vh;
+}
+
+@keyframes move-bg {
+	to { background-position: 50% 100%; }
+}
+
+#clipper:checked ~ section p:first-of-type {
+  -webkit-background-clip: unset;
+  outline: 4px dashed hsl(0 0% 100%);
+}
+
+p:first-of-type {
+  transition: all 0.2s;
+}
+
+</style>
+  </body>
 </html>
